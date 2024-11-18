@@ -32,9 +32,9 @@ def create_a4_page_with_images(image_paths, output_pdf, card_format):
     # Create a canvas object with the specified output PDF file and page size
     c = canvas.Canvas(output_pdf, A4)
     A4_WIDTH, A4_HEIGHT = A4
-    if card_format.__eq__(CardFormat.YUGIOH):
+    if card_format.value == CardFormat.YUGIOH.value:
         CARD_WIDTH, CARD_HEIGHT = get_ygo_card_size_as_points()
-    elif card_format.__eq__(CardFormat.MAGIC):
+    elif card_format.value == CardFormat.MAGIC.value:
         CARD_WIDTH, CARD_HEIGHT = get_mtg_card_size_as_points()
     else:
         raise ValueError(f"No Card Format found for Card Format Enum {card_format}")
@@ -88,6 +88,6 @@ def main(image_folder, output_pdf, card_format):
 
 
 if __name__ == '__main__':
-    folder_path = '/home/wiliam/Documents/MTG Decks/Elf_Drache_Ruric'  # path to directory holding image files
-    pdf_path = 'resource/elf_dragon_ruric.pdf'  # path where the finished pdf file will be stored
+    folder_path = '/home/wiliam/Documents/MTG Decks/chishiro addons'  # path to directory holding image files
+    pdf_path = 'resource/addons.pdf'  # path where the finished pdf file will be stored
     main(folder_path, pdf_path, CardFormat.MAGIC)
